@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>WrApper</title>
+    </head>
+
+    <body>
+
+    <!-- Navigation Menu -->
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="HTML/admin.html">Admin</a>
+        <a href="HTML/page1.html">App Name 1</a>
+        <a href="HTML/page3.html">App Name 2</a>
+        <a href="HTML/about.html">About</a>
+    </div>
+
+
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+    <!-- Navigation Menu -->
+
+        <div class="app">
+            <div id="deviceready" class="blink">
+                <p class="event listening">Initializing WrApper</p>
+                <p class="event received">WrApper is Ready</p>
+            </div>
+        </div>
+
+        <div class="app">
+                <button id = "getHTML" style="visibility:hidden">Get HTML</button><br>
+                <button id = "storeHTML" style="visibility:hidden">Store HTML in storage</button><br>
+                <button id = "pullHTML" style="visibility:hidden">Pull HTML from storage</button><br>
+        </div>
+        <script type="text/javascript" src="js/index.js"></script>
+
+        <div class="form">
+                <br>
+                Enter the HTML URL you would like to WrApp:<br><br>
+                <center>
+                    <!--
+                    <select name="lastfive">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                    </select>
+                    -->
+                    <textarea id = "htmllocation" rows="5" cols="35" style="background-color:lightgray">http://192.168.1.28/example/testHtmlGet.html</textarea>
+                    <br><br>
+                    <button id = "submit">   Get it   </button>
+                    <br><br>
+                    History: (Cached on Device)<br>
+                    <table>
+
+                            <script type="text/javascript">
+                                strArray = viewHtmlHist();
+                                strArrayLength = strArray.length;
+                                for(x=0; x!=strArrayLength; x++) {
+                                    document.write("<tr><td><button id=submitfromhist"+x+">load -></button></td><td><input type=text readonly id=htmllocation"+x+" size=30 value="+strArray[x]+"></td></tr>");
+                                }
+
+                            </script>
+
+                    </table>
+
+                </center>
+
+        </div>
+
+
+
+        <script type="text/javascript" src="js/index.js"></script> <!-- need two of these entry (one here to keep "device ready" green light on. One above to get function call to work) -->
+        <script type="text/javascript" src="cordova.js"></script>
+
+
+    </body>
+</html>
